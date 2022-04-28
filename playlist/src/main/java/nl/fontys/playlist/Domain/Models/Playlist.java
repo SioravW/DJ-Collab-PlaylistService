@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Getter
@@ -14,9 +15,11 @@ import java.util.List;
 public class Playlist {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public long id;
-    public String name;
+    private long id;
+    private UUID externalId;
+    private String name;
+    private long userId;
 
     @ManyToMany
-    List<Song> songs;
+    private List<Song> songs;
 }
