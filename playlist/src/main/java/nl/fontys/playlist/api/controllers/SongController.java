@@ -1,8 +1,7 @@
-package nl.fontys.playlist.API.Controllers;
+package nl.fontys.playlist.api.controllers;
 
 
-import nl.fontys.playlist.Domain.Service.PlaylistService;
-import nl.fontys.playlist.Domain.Service.SongService;
+import nl.fontys.playlist.domain.service.SongService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 

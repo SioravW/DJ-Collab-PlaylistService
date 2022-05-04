@@ -1,25 +1,21 @@
-package nl.fontys.playlist.Domain.Models;
-
+package nl.fontys.playlist.domain.models;
 
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.UUID;
 
 @Entity
 @Getter
 @Setter
-@Table(name="[playlist]")
-public class Playlist {
+@Table(name="[song]")
+public class Song {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private UUID externalId;
-    private String name;
-    private long userId;
-
-    @ManyToMany
-    private List<Song> songs;
+    private String title;
+    private String artist;
+    private Genre genre;
 }
