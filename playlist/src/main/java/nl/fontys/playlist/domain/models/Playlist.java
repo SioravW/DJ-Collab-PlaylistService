@@ -20,6 +20,7 @@ public class Playlist {
 
     private UUID externalId;
     private String name;
+    private Genre genre;
     private UUID userId;
 
     @ManyToMany

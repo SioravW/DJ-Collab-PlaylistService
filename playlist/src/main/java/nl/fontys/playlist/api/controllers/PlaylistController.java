@@ -2,14 +2,14 @@ package nl.fontys.playlist.api.controllers;
 
 import nl.fontys.playlist.domain.dto.AddPlaylistDTO;
 import nl.fontys.playlist.domain.dto.PlaylistDTO;
-import nl.fontys.playlist.domain.models.Playlist;
 import nl.fontys.playlist.domain.service.PlaylistService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
 
-@RestController(value = "/playlist")
+@RequestMapping(path = "/playlist")
+@RestController
 @CrossOrigin(origins = "*")
 public class PlaylistController {
 

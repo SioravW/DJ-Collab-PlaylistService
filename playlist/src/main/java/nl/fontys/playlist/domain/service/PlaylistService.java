@@ -33,6 +33,7 @@ public class PlaylistService {
                     .id(playlist.getExternalId())
                     .name(playlist.getName())
                     .userId(playlist.getUserId())
+                    .genre(playlist.getGenre())
                     .songs(playlist.getSongs())
                     .build();
             reply.add(DTO);
@@ -45,12 +46,14 @@ public class PlaylistService {
         playlist.setExternalId(UUID.randomUUID());
         playlist.setName(DTO.getName());
         playlist.setUserId(DTO.getUserId());
+        playlist.setGenre(DTO.getGenre());
 
         playlist = repository.save(playlist);
         return PlaylistDTO.builder()
                 .id(playlist.getExternalId())
                 .name(playlist.getName())
                 .userId(playlist.getUserId())
+                .genre(playlist.getGenre())
                 .build();
     }
 
@@ -59,6 +62,7 @@ public class PlaylistService {
         Playlist playlist = optPlaylist.get();
 
         playlist.setName(playlistDTO.getName());
+        playlist.setGenre(playlistDTO.getGenre());
 
         playlist = repository.save(playlist);
 
@@ -66,6 +70,7 @@ public class PlaylistService {
                 .id(playlist.getExternalId())
                 .name(playlist.getName())
                 .userId(playlist.getUserId())
+                .genre(playlist.getGenre())
                 .songs(playlist.getSongs())
                 .build();
     }

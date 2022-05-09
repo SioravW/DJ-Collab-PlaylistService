@@ -3,6 +3,7 @@ package nl.fontys.playlist.domain.dto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import nl.fontys.playlist.domain.models.Genre;
 import nl.fontys.playlist.domain.models.Song;
 
 import javax.persistence.ManyToMany;
@@ -16,6 +17,7 @@ public class PlaylistDTO {
 
     private UUID id;
     private String name;
+    private Genre genre;
     private UUID userId;
 
     private List<Song> songs;
