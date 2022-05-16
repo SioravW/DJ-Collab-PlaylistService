@@ -11,5 +11,6 @@ import java.util.UUID;
 public class AddPlaylistDTO {
     private String name;
     private UUID userId;
+    private String userName;
     private Genre genre;
 }
