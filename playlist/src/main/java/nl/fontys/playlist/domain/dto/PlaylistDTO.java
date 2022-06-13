@@ -19,6 +19,7 @@ public class PlaylistDTO {
     private String name;
     private Genre genre;
     private UUID userId;
+    private String userName;
 
     private List<Song> songs;
 }
