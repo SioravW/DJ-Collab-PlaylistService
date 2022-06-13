@@ -22,6 +22,7 @@ public class Playlist {
     private String name;
     private Genre genre;
     private UUID userId;
+    private String userName;
 
     @ManyToMany
     private List<Song> songs;

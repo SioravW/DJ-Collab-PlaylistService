@@ -5,6 +5,7 @@ import nl.fontys.playlist.database.repository.PlaylistRepository;
 import nl.fontys.playlist.domain.dto.AddPlaylistDTO;
 import nl.fontys.playlist.domain.dto.PlaylistDTO;
 import nl.fontys.playlist.domain.models.Playlist;
+import nl.fontys.playlist.rabbitmq.dto.UsernameChangedDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +34,7 @@ public class PlaylistService {
                     .id(playlist.getExternalId())
                     .name(playlist.getName())
                     .userId(playlist.getUserId())
+                    .userName(playlist.getUserName())
                     .genre(playlist.getGenre())
                     .songs(playlist.getSongs())
                     .build();
@@ -42,10 +44,12 @@ public class PlaylistService {
     }
 
     public PlaylistDTO addPlaylist(AddPlaylistDTO DTO){
+        UUID userId = UUID.fromString("6fa992e4-a385-4d11-bbfa-1223e32edb80");
         Playlist playlist = new Playlist();
         playlist.setExternalId(UUID.randomUUID());
         playlist.setName(DTO.getName());
-        playlist.setUserId(DTO.getUserId());
+        playlist.setUserId(userId);
+        playlist.setUserName("Woepie");
         playlist.setGenre(DTO.getGenre());
 
         playlist = repository.save(playlist);
@@ -53,6 +57,7 @@ public class PlaylistService {
                 .id(playlist.getExternalId())
                 .name(playlist.getName())
                 .userId(playlist.getUserId())
+                .userName(playlist.getUserName())
                 .genre(playlist.getGenre())
                 .build();
     }
@@ -70,6 +75,7 @@ public class PlaylistService {
                 .id(playlist.getExternalId())
                 .name(playlist.getName())
                 .userId(playlist.getUserId())
+                .userName(playlist.getUserName())
                 .genre(playlist.getGenre())
                 .songs(playlist.getSongs())
                 .build();
@@ -82,5 +88,14 @@ public class PlaylistService {
         repository.delete(playlist);
         optPlaylist = repository.findByExternalId(id);
         return optPlaylist.isEmpty();
+    }
+
+    public void updateUsername(UsernameChangedDTO dto){
+        ArrayList<Playlist> playlists = repository.findByUserId(dto.getUserId());
+        for (Playlist playlist :
+                playlists) {
+            playlist.setUserName(dto.getUsername());
+        }
+        repository.saveAll(playlists);
     }
 }

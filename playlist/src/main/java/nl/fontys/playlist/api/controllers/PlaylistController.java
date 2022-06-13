@@ -3,6 +3,7 @@ package nl.fontys.playlist.api.controllers;
 import nl.fontys.playlist.domain.dto.AddPlaylistDTO;
 import nl.fontys.playlist.domain.dto.PlaylistDTO;
 import nl.fontys.playlist.domain.service.PlaylistService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.UUID;
 @RequestMapping(path = "/playlist")
 @RestController
 @CrossOrigin(origins = "*")
+@PreAuthorize("hasRole('api-user')")
 public class PlaylistController {
 
     private final PlaylistService service;
