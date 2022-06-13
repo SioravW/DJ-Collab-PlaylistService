@@ -1,9 +1,7 @@
 package nl.fontys.playlist.database.repository;
 
 import nl.fontys.playlist.domain.models.Song;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-@Repository
-public interface SongRepository extends JpaRepository<Song, Long> {
+public interface SongRepository  extends MongoRepository<Song, Long> {
 }
