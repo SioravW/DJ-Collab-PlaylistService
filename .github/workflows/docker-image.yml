@@ -24,10 +24,11 @@ jobs:
     - name: maven package
       run: mvn package --file pom.xml
       
-    - name: Install doctl
-      uses: digitalocean/action-doctl@v2
+    - name: Set up kubectl
+      uses: matootie/dokube@v1.4.0
       with:
-        token: ${{ secrets.DIGITALOCEAN_TOKEN }}
+        personalAccessToken: ${{ secrets.DIGITALOCEAN_TOKEN }}
+        clusterName: djcollab
         
      
     - name: Login to DockerHub
