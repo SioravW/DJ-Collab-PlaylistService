@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-playlistservice
+  namespace: backend
+  # annotations:
+  #   cert-manager.io/issuer: letsencrypt-nginx
+spec:
+  # tls:
+  # - hosts:
+  #   - echo.starter-kit.online
+  #   secretName: letsencrypt-nginx-echo
+  rules:
+    - host: playlistservice.siora.nl
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: playlistservice
+                port:
+                  number: 8082
+  ingressClassName: nginx
