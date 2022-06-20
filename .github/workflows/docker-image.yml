@@ -29,7 +29,6 @@ jobs:
       with:
         personalAccessToken: ${{ secrets.DIGITALOCEAN_TOKEN }}
         clusterName: djcollab
-        
      
     - name: Login to DockerHub
       uses: docker/login-action@v1
