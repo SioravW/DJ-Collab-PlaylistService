@@ -40,7 +40,7 @@ class HelloWorldUser(HttpUser):
     @task
     def add_playlist(self):
          response = self.client.post("/playlist", json={"name": "playlist", "userId": "dde77171-7f42-4228-9fde-7cada73bb9da", "genre": "POP", "userName": "user"})
-         if status_code == 200:
+         if response.status_code == 200:
             playlistId = response.json()['id']
             self.client.put(f"/playlist/{playlistId}", json={"id": playlistId, "name": "rock playlist", "userId": "dde77171-7f42-4228-9fde-7cada73bb9da", "genre": "ROCK", "userName": "user"}, name="/playlist/id")
             self.client.get(f"/playlist/{playlistId}", name="/playlist/id")
