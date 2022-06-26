@@ -48,8 +48,8 @@ public class PlaylistService {
         Playlist playlist = new Playlist();
         playlist.setExternalId(UUID.randomUUID());
         playlist.setName(DTO.getName());
-        playlist.setUserId(userId);
-        playlist.setUserName("Woepie");
+        playlist.setUserId(DTO.getUserId());
+        playlist.setUserName(DTO.getUserName());
         playlist.setGenre(DTO.getGenre());
 
         playlist = repository.save(playlist);

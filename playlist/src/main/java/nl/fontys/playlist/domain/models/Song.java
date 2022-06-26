@@ -2,6 +2,7 @@ package nl.fontys.playlist.domain.models;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
 import java.util.UUID;
@@ -12,8 +13,7 @@ import java.util.UUID;
 @Table(name="[song]")
 public class Song {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private String id;
     private UUID externalId;
     private String title;
     private String artist;

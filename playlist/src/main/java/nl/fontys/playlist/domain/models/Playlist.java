@@ -1,22 +1,25 @@
 package nl.fontys.playlist.domain.models;
 
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.*;
 import java.util.List;
 import java.util.UUID;
 
-@Entity
 @Getter
 @Setter
-@Table(name="[playlist]")
+@Document("playlist")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Playlist {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @GeneratedValue
+    private String id;
 
     private UUID externalId;
     private String name;
