@@ -27,13 +27,11 @@ def _(environment, **kw):
         environment.process_exit_code = 0
 
 def put_playlist(self, id):
-    self.client.put(f"/playlist/{id}", json={"id": id, "name": "rock playlist", "userId": "dde77171-7f42-4228-9fde-7cada73bb9da", "genre": "ROCK", "userName": "user"}, name="/playlist/id")
 
-def get_specific_playlist(self, id):
-    self.client.get(f"/playlist/{id}", name="/playlist/id")
+
 
 def delete_playlist(self, id):
-    self.client.delete(f"/playlist/{id}", name="/playlist/id")
+
 
 class HelloWorldUser(HttpUser):
     wait_time = between(1, 5)
@@ -50,7 +48,5 @@ class HelloWorldUser(HttpUser):
          response = self.client.post("/playlist", json={"name": "playlist", "userId": "dde77171-7f42-4228-9fde-7cada73bb9da", "genre": "POP", "userName": "user"})
          if response.status_code == 200:
             playlistId = response.json()['id']
-            put_playlist(self, playlistId)
-            get_specific_playlist(self, playlistId)
-            wait(3)
-            delete_playlist(self, playlistId)
+            self.client.put("/playlist", json={"id": id, "name": "rock playlist", "userId": "dde77171-7f42-4228-9fde-7cada73bb9da", "genre": "ROCK", "userName": "user"})
+            self.client.delete(f"/playlist/{id}", name="/playlist/id")
