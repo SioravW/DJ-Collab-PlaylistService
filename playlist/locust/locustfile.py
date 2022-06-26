@@ -41,5 +41,5 @@ class HelloWorldUser(HttpUser):
          response = self.client.post("/playlist", json={"name": "playlist", "userId": "dde77171-7f42-4228-9fde-7cada73bb9da", "genre": "POP", "userName": "user"})
          if response.status_code == 200:
             playlistId = response.json()['id']
-            self.client.put("/playlist", json={"id": id, "name": "rock playlist", "userId": "dde77171-7f42-4228-9fde-7cada73bb9da", "genre": "ROCK", "userName": "user"})
-            self.client.delete(f"/playlist/{id}", name="/playlist/id")
+            self.client.put("/playlist", json={"id": playlistId, "name": "rock playlist", "userId": "dde77171-7f42-4228-9fde-7cada73bb9da", "genre": "ROCK", "userName": "user"})
+            self.client.delete(f"/playlist/{playlistId}", name="/playlist/id")
