@@ -26,13 +26,6 @@ def _(environment, **kw):
     else:
         environment.process_exit_code = 0
 
-def put_playlist(self, id):
-
-
-
-def delete_playlist(self, id):
-
-
 class HelloWorldUser(HttpUser):
     wait_time = between(1, 5)
 
