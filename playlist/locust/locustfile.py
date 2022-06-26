@@ -52,4 +52,5 @@ class HelloWorldUser(HttpUser):
             playlistId = response.json()['id']
             put_playlist(self, playlistId)
             get_specific_playlist(self, playlistId)
+            wait(3)
             delete_playlist(self, playlistId)
