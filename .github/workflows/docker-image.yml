@@ -44,4 +44,4 @@ jobs:
         tags: sioravw/playlistservice:latest
         
     - name: Deploy to DigitalOcean Kubernetes
-      run: kubectl apply -f nginx/PlaylistServiceDeployment.yaml
+      run: kubectl rollout restart -n backend deployment playlistservice
